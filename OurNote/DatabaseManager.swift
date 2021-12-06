@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseAuth
+//hellokana
 
 class DatabaseManager {
     
