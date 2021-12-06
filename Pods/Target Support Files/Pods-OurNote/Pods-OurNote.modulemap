@@ -1,0 +1,6 @@
+framework module Pods_OurNote {
+  umbrella header "Pods-OurNote-umbrella.h"
+
+  export *
+  module * { export * }
+}
