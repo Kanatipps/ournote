@@ -9,6 +9,7 @@ import Foundation
 import FirebaseFirestore
 import FirebaseAuth
 //hellokana
+//Hello Ken
 
 class DatabaseManager {
     
