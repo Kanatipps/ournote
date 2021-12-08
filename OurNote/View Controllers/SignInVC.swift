@@ -50,7 +50,7 @@ class SignInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
-        DatabaseManager.shared.checkUserID()
+        DatabaseManager.shared.checkUID()
     }
     
     func setUpElements() {

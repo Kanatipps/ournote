@@ -12,7 +12,7 @@ import FirebaseAuth
 class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let db = Firestore.firestore()
-    var data = [classModel]()
+    var data = [noteModel]()
     
     func numberOfSections(in tableView: UITableView) -> Int {
             return 1

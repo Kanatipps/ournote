@@ -19,18 +19,18 @@ class NoteWrite: UIViewController {
     }
     @IBAction func saveTap(_ sender: Any) {
 
-        DatabaseManager.shared.createNote(noteTitle: titleTF.text!, noteDtail: textWrite.text!)  { [self] (result) in
-            DispatchQueue.main.async {
-            switch result {
-            case .success(let notedata):
-                print("USER",notedata)
-                self.transitionToHome()
-            case .failure(let error):
-                print("ERROR",error)
-                
-                }
-            }
-        }
+//        DatabaseManager.shared.createNote(noteTitle: titleTF.text!, noteDtail: textWrite.text!)  { [self] (result) in
+//            DispatchQueue.main.async {
+//            switch result {
+//            case .success(let notedata):
+//                print("USER",notedata)
+//                self.transitionToHome()
+//            case .failure(let error):
+//                print("ERROR",error)
+//                
+//                }
+//            }
+//        }
     }
     func transitionToHome() {
         

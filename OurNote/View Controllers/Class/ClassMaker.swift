@@ -37,14 +37,12 @@ class ClassMaker: UIViewController {
             self.present(alert, animated: true, completion: nil)
             return
         }
-            DatabaseManager.shared.createClass(class_name: className.text!) { [weak self] (result) in
+        DatabaseManager.shared.createNote(note_title: className.text!) { [weak self] (result) in
             DispatchQueue.main.async {
         switch result {
             case .success(let classdata):
                 print("classdata = ",classdata)
-                self?.codeLB.text = classdata.classCode
-                self?.codeLB.alpha = 1
-                DatabaseManager.shared.updateClassID()
+                DatabaseManager.shared.updateNoteID()
                 self?.transitionToHome()
 
             case .failure(let error):
@@ -64,7 +62,7 @@ class ClassMaker: UIViewController {
     
     func setUpElements() {
         
-        codeLB.alpha = 0
+//        codeLB.alpha = 0
         
         Utilities.styleTextField(className)
         Utilities.styleFilledButton(createClBT)

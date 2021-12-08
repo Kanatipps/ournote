@@ -10,7 +10,7 @@ import Firebase
 
 class ClassEnter: UIViewController {
     
-    var classMod = [classModel]()
+    var classMod = [noteModel]()
 
     @IBOutlet weak var classCodeTF: UITextField!
     @IBOutlet weak var joinclassBT: UIButton!

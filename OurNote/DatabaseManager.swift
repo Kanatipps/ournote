@@ -92,44 +92,20 @@ class DatabaseManager {
         }
     }
     
-    public func randomString() -> String {
-      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        return String((1...6).map{ _ in letters.randomElement()! })
-    }
+//    public func randomString() -> String {
+//      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+//        return String((1...6).map{ _ in letters.randomElement()! })
+//    }
 
-    public func createClass(class_name: String, completion:@escaping(Result<classModel,Error>) -> Void) {
+    public func createNote(note_title: String, completion:@escaping(Result<noteModel,Error>) -> Void) {
             var ref: DocumentReference? = nil
-            var response = classModel()
-            let invitecode = randomString()
-            ref = db.collection("class").addDocument(data: [
-                "classID" : "",
-                "classCode" : invitecode,
-                "className" : class_name,
-                "classMember" : [],
-                "classNoteID" : [],
+            var response = noteModel()
+            ref = db.collection("note").addDocument(data: [
+                "noteID" : "",
+                "title" : note_title,
+                "noteDetail" : "",
+                "usersMemer" : [],
 
-            ]) { err in
-                if let err = err {
-                    completion(.failure(err))
-                } else {
-                    response.classCode = invitecode
-                    response.className = class_name
-                    response.classMember = []
-                    completion(.success(response))
-                }
-            }
-        }
-    
-    public func createNote(noteTitle: String, noteDtail:String, completion:@escaping(Result<classModel,Error>) -> Void) {
-            var ref: DocumentReference? = nil
-            var response = classModel()
-            let invitecode = randomString()
-            let IDnote = updateNoteID()
-            ref = db.collection("class").addDocument(data: [
-                "classID" : IDnote,
-                "noteDetail" : noteDtail,
-                "title" : noteTitle,
-             
             ]) { err in
                 if let err = err {
                     completion(.failure(err))
@@ -138,6 +114,25 @@ class DatabaseManager {
                 }
             }
         }
+    
+//    public func createNote(noteTitle: String, noteDtail:String, completion:@escaping(Result<classModel,Error>) -> Void) {
+//            var ref: DocumentReference? = nil
+//            var response = classModel()
+//            let invitecode = randomString()
+//            let IDnote = updateNoteID()
+//            ref = db.collection("class").addDocument(data: [
+//                "classID" : IDnote,
+//                "noteDetail" : noteDtail,
+//                "title" : noteTitle,
+//
+//            ]) { err in
+//                if let err = err {
+//                    completion(.failure(err))
+//                } else {
+//                    completion(.success(response))
+//                }
+//            }
+//        }
     
     func updateNoteID(){
         db.collection("note").getDocuments() { (querySnapshot, err) in
@@ -161,6 +156,44 @@ class DatabaseManager {
         }
     }
     
+    private func findINviteCod() {
+            // [START fs_collection_group_query]
+            db.collectionGroup("class").whereField("classCode", isEqualTo: "museum").getDocuments { (snapshot, error) in
+                // [START_EXCLUDE]
+                print(snapshot?.documents.count ?? 0)
+                // [END_EXCLUDE]
+            }
+            // [END fs_collection_group_query]
+        }
+    
+    
+    
+//    func getData(completion:@escaping(Result<[classModel],Error>) -> Void) {
+//            var response = [classModel]()
+//            db.collection("class").getDocuments() { (querySnapshot, err) in
+//                if let err = err {
+//                    print("Error getting documents: \(err)")
+//                    completion(.failure(err))
+//                } else {
+//                    for document in querySnapshot!.documents {
+//                        var docRef = self.db.collection("class").document(document.documentID)
+//                        docRef.getDocument { (document, error) in
+//                            guard let document = document, document.exists else {
+//                                print("Document does not exist")
+//                                return
+//                            }
+//                            let dataDescription = document.data()
+//                            response.append(classModel(className:dataDescription!["className"] as! String,
+//                                                       classID:dataDescription!["classID"] as! String,
+//                                                       classCode:dataDescription!["classMember"] as! String,
+//                                                       classMember:dataDescription!["classMember"] as? [String] ,
+//                                                       noteID:dataDescription!["classNoteID"] as? [String] ))
+//                            completion(.success(response))
+//                        }
+//                    }
+//                }
+//            }
+//        }
     
 //    func checkJoinClass(invite:String,classdata:[classModel]) -> Bool {
 //        
@@ -189,11 +222,9 @@ class DatabaseManager {
 //        }
 //    
 //    
-//    //
+//
 //    
-//    public func checkUID() -> String {
-//            return UserDefaults.standard.string(forKey: "uid") ?? ""
-//        }
+
 //    
 //    func getDocIDClassAttendance(invite:String,classdata:[classModel]) -> String {
 //            var doc:String = ""
@@ -220,48 +251,46 @@ class DatabaseManager {
 //        }
 //    //
     
-    func updateClassID(){
-        db.collection("class").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    let Ref = self.db.collection("class").document(document.documentID)
-
-                    Ref.updateData([
-                        "classID": document.documentID
-                    ]) { err in
-                        if let err = err {
-                            print("Error updating document: \(err)")
-                        } else {
-                            print("Document successfully updated")
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
+//    func updateClassID(){
+//        db.collection("class").getDocuments() { (querySnapshot, err) in
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//                for document in querySnapshot!.documents {
+//                    let Ref = self.db.collection("class").document(document.documentID)
+//
+//                    Ref.updateData([
+//                        "classID": document.documentID
+//                    ]) { err in
+//                        if let err = err {
+//                            print("Error updating document: \(err)")
+//                        } else {
+//                            print("Document successfully updated")
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
 //    func getClass() {
 //            let db = Firestore.firestore()
-//            db.collection("card").getDocuments() { [weak self] (querySnapshot, err) in
+//            db.collection("class").getDocuments() { [weak self] (querySnapshot, err) in
 //                if let err = err {
 //                    print("Error getting documents: \(err)")
 //                } else {
 //                    var data = [classModel]()
 //                    for document in querySnapshot!.documents {
 //                        if let userid = Auth.auth().currentUser?.uid {
-//                            if userid == document.data()["uid"] as! String {
+//                            if userid == document.data()["classMember"] as! [any] {
 //                                var obj = classModel()
-//                                obj.uid = document.data()["uid"]! as! String
-//                                obj.cardname = document.data()["cardname"]! as! String
-//                                obj.point = document.data()["point"]! as! Int
+//                                obj.className = document.data()["className"]! as! String
 //                                data.append(obj)
 //                            }
 //                        }
 //                        self?.data = data
 //                        self?.tableview.reloadData()
-//    //                    print("\(document.documentID) => \(document.data())")
+//                        print("\(document.documentID) => \(document.data())")
 //                    }
 //                }
 //            }
@@ -276,8 +305,8 @@ class DatabaseManager {
                 print("An error occurred")
             }
         }
-    
-    public func checkUserID() -> String {
+    public func checkUID() -> String {
             return UserDefaults.standard.string(forKey: "uid") ?? ""
         }
+   
 }

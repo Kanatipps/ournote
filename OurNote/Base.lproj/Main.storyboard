@@ -343,13 +343,13 @@
         <!--Class Enter-->
         <scene sceneID="mzA-kz-DmT">
             <objects>
-                <viewController id="2fB-Vo-s9k" customClass="ClassEnter" customModule="OurNote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="2fB-Vo-s9k" customClass="ClassEnter" customModule="OurNote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gE3-77-1ft">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Mbk-Vz-n2n">
-                                <rect key="frame" x="40" y="288" width="310" height="142"/>
+                                <rect key="frame" x="40" y="288" width="310" height="180"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ENTER CLASS CODE" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wma-BW-MCP">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
@@ -361,26 +361,28 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mop-Q7-FYE">
-                                        <rect key="frame" x="0.0" y="65" width="310" height="31"/>
+                                        <rect key="frame" x="0.0" y="65" width="310" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="N5i-eu-ZCL"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Join class"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Join Note"/>
                                         <connections>
                                             <action selector="joinClassTap:" destination="2fB-Vo-s9k" eventType="touchUpInside" id="pya-Ss-y3M"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Xi-Xt-67j">
-                                        <rect key="frame" x="0.0" y="111" width="310" height="31"/>
+                                        <rect key="frame" x="0.0" y="130" width="310" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="AWY-cD-0NR"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Create Class"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Create Note"/>
                                         <connections>
                                             <segue destination="BmZ-mT-zxH" kind="show" id="a59-TX-Siv"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="Wma-BW-MCP" firstAttribute="height" secondItem="mop-Q7-FYE" secondAttribute="height" multiplier="1.6129" id="TWX-hJ-mIU"/>
-                                    <constraint firstItem="Wma-BW-MCP" firstAttribute="height" secondItem="1Xi-Xt-67j" secondAttribute="height" multiplier="1.6129" id="u68-ty-PMO"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xXZ-3Q-HUq"/>
@@ -405,7 +407,7 @@
         <!--View Controller-->
         <scene sceneID="c2T-hK-uyy">
             <objects>
-                <viewController id="w6P-JX-x6U" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="w6P-JX-x6U" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Omd-4n-v1N">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -431,7 +433,8 @@
         <!--Note Write-->
         <scene sceneID="JsO-je-Kfx">
             <objects>
-                <viewController id="5Il-4M-HKW" customClass="NoteWrite" customModule="OurNote" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fss-bA-duD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController modalPresentationStyle="fullScreen" id="5Il-4M-HKW" customClass="NoteWrite" customModule="OurNote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ewo-cg-Yk6">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -471,29 +474,22 @@
                         <outlet property="titleTF" destination="ZB5-Rb-pYU" id="8ix-ha-UgC"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fss-bA-duD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6869.2307692307686" y="455.68720379146919"/>
         </scene>
         <!--Class Maker-->
         <scene sceneID="xu0-Bu-ha1">
             <objects>
-                <viewController id="BmZ-mT-zxH" customClass="ClassMaker" customModule="OurNote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BmZ-mT-zxH" customClass="ClassMaker" customModule="OurNote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WPt-eI-3zW">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZgE-gK-3y3">
-                                <rect key="frame" x="40" y="258" width="310" height="131.33333333333337"/>
+                                <rect key="frame" x="40" y="288" width="310" height="150.33333333333337"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Rv-2b-lFX">
-                                        <rect key="frame" x="0.0" y="0.0" width="310" height="20.333333333333332"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Class name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x8H-6o-unS">
-                                        <rect key="frame" x="0.0" y="35.333333333333314" width="310" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="310" id="1dt-WE-8ns"/>
                                             <constraint firstAttribute="height" constant="50" id="o8y-Hj-CAM"/>
@@ -502,18 +498,23 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEz-Sm-r3C">
-                                        <rect key="frame" x="0.0" y="100.33333333333331" width="310" height="31"/>
+                                        <rect key="frame" x="0.0" y="65" width="310" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="aRk-NX-jNJ"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Create Class"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Create Note"/>
                                         <connections>
                                             <action selector="createClassTap:" destination="BmZ-mT-zxH" eventType="touchUpInside" id="1ta-Rw-4vf"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kza-Bt-PiW">
+                                        <rect key="frame" x="0.0" y="130" width="310" height="20.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="x8H-6o-unS" firstAttribute="height" secondItem="PEz-Sm-r3C" secondAttribute="height" multiplier="1.6129" id="AVa-hw-u6e"/>
-                                    <constraint firstItem="x8H-6o-unS" firstAttribute="height" secondItem="3Rv-2b-lFX" secondAttribute="height" multiplier="2.45902" id="k1y-l6-MhL"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="k9l-l3-y78"/>
@@ -521,13 +522,12 @@
                         <constraints>
                             <constraint firstItem="k9l-l3-y78" firstAttribute="trailing" secondItem="ZgE-gK-3y3" secondAttribute="trailing" constant="40" id="9dp-LX-wdH"/>
                             <constraint firstItem="ZgE-gK-3y3" firstAttribute="leading" secondItem="k9l-l3-y78" secondAttribute="leading" constant="40" id="PIF-8R-3f1"/>
-                            <constraint firstItem="ZgE-gK-3y3" firstAttribute="top" secondItem="k9l-l3-y78" secondAttribute="top" constant="170" id="sSX-tO-EPy"/>
+                            <constraint firstItem="ZgE-gK-3y3" firstAttribute="top" secondItem="k9l-l3-y78" secondAttribute="top" constant="200" id="upd-Ib-7Rh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hSf-um-BiR"/>
                     <connections>
                         <outlet property="className" destination="x8H-6o-unS" id="4uy-9o-gFU"/>
-                        <outlet property="codeLB" destination="3Rv-2b-lFX" id="VBu-GZ-wAc"/>
                         <outlet property="createClBT" destination="PEz-Sm-r3C" id="VYF-2k-toZ"/>
                     </connections>
                 </viewController>
