@@ -12,8 +12,13 @@ struct Constants {
     struct Storyboard {
         
         static let homeViewController = "HomeVCon"
-        
+        static let initViewController = "InitVCon"
     }
     
-    
+    struct UserDefaults {
+        static let userid = "userid"
+        static let username = "username"
+        
+    }
+
 }

@@ -9,39 +9,52 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class HomeVC: UIViewController {
+class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var welcomeLB: UILabel!
+    let db = Firestore.firestore()
+    var data = [classModel]()
     
-
+    func numberOfSections(in tableView: UITableView) -> Int {
+            return 1
+        }
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return data.count ?? 0
+        }
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->            UITableViewCell {
+                let cell:ClassCell = tableView.dequeueReusableCell(withIdentifier: "classCell") as! ClassCell
+//                cell.cardtitle.text = data[indexPath.row].cardname ?? ""
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ontap(gesture:)))
+                cell.tag = indexPath.row
+                cell.addGestureRecognizer(tapGesture)
+                return cell
+           
+        }
+    
+    @objc func ontap(gesture:UITapGestureRecognizer) {
+        if let cell = gesture.view {
+            print(cell.tag)
+            performSegue(withIdentifier: "show_card", sender: data[cell.tag])
+        }
+    }
+    
+    func transitionToHome() {
+        
+        let navVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.initViewController)
+        self.view.window?.rootViewController = navVC
+        self.view.window?.makeKeyAndVisible()
+    }
+    @IBOutlet weak var tableview: UITableView!
+    
+    
+    @IBAction func logoutTap(_ sender: Any) {
+        DatabaseManager.shared.logout()
+        transitionToHome()
+    }
+    
     override func viewDidLoad() {
-        
-//        let defautlts = UserDefaults.standard
-
         super.viewDidLoad()
-        
-//        Service.getUserinfo {
-//            self.welcomeLB.text = "Welcome \(defautlts.string(forKey: "userFNameKey")!)"
-//        } onError: { err in
-//            self.present(Service.createAlertCon(title: "ERROR", messaage: err!.localizedDescription), animated: true, completion: nil)
-//
-//        }
-//
-//
-//    }
-//    @IBAction func LogOutTab(_ sender: Any) {
-//        let auth = Auth.auth()
-//
-//        do {
-//            try auth.signOut()
-//            let defaults = UserDefaults.standard
-//            defaults.set(false, forKey: "isUserSignedIn")
-//
-//            self.dismiss(animated: true, completion: nil)
-//        } catch let signoutErr {
-//            self.present(Service.createAlertCon(title: "ERROR", messaage: signoutErr.localizedDescription), animated: true, completion: nil)
-//        }
-//    }
-    
+        tableview.register(UINib(nibName: "noteCell", bundle: nil), forCellReuseIdentifier: "classCell")
 }
+    
 }

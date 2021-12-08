@@ -11,6 +11,8 @@
 		1E8753D34AEF7A9E0264F71C /* Pods_OurNote_OurNoteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D353CDB4EC784EDA13F6AC /* Pods_OurNote_OurNoteUITests.framework */; };
 		7B8CCFDA274A91430098CBC2 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8CCFD9274A91430098CBC2 /* HomeVC.swift */; };
 		7B8CCFDC274EAED30098CBC2 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8CCFDB274EAED30098CBC2 /* Service.swift */; };
+		7B9B476227601AA50065236D /* NoteWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9B476127601AA50065236D /* NoteWrite.swift */; };
+		7B9B47642760284F0065236D /* noteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B9B47632760284F0065236D /* noteCell.xib */; };
 		7BB0E00A2753D7C500A8898F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0E0092753D7C500A8898F /* Utilities.swift */; };
 		7BB0E00C2753E9F800A8898F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB0E00B2753E9F800A8898F /* Constants.swift */; };
 		7BB634EF275E718000CDADEE /* ClassMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB634EE275E718000CDADEE /* ClassMaker.swift */; };
@@ -57,6 +59,8 @@
 		71D353CDB4EC784EDA13F6AC /* Pods_OurNote_OurNoteUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OurNote_OurNoteUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8CCFD9274A91430098CBC2 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		7B8CCFDB274EAED30098CBC2 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		7B9B476127601AA50065236D /* NoteWrite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteWrite.swift; sourceTree = "<group>"; };
+		7B9B47632760284F0065236D /* noteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = noteCell.xib; sourceTree = "<group>"; };
 		7BB0E0092753D7C500A8898F /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		7BB0E00B2753E9F800A8898F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7BB634EE275E718000CDADEE /* ClassMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassMaker.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				7BB634EE275E718000CDADEE /* ClassMaker.swift */,
+				7B9B476127601AA50065236D /* NoteWrite.swift */,
 				7BB634F0275E798800CDADEE /* ClassEnter.swift */,
 				7BB634F2275E7C2B00CDADEE /* ClassCell.swift */,
 			);
@@ -195,6 +200,7 @@
 				7B8CCFD8274A91080098CBC2 /* Helpers */,
 				7B8CCFD7274A90A70098CBC2 /* View Controllers */,
 				7BBC91382747A35C00E1A90B /* Main.storyboard */,
+				7B9B47632760284F0065236D /* noteCell.xib */,
 				7BBC913B2747A35E00E1A90B /* Assets.xcassets */,
 				7BBC913D2747A35E00E1A90B /* LaunchScreen.storyboard */,
 				7BBC91402747A35E00E1A90B /* Info.plist */,
@@ -340,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BBC913F2747A35E00E1A90B /* LaunchScreen.storyboard in Resources */,
+				7B9B47642760284F0065236D /* noteCell.xib in Resources */,
 				7BBC916D2747FCE100E1A90B /* GoogleService-Info.plist in Resources */,
 				7BBC913C2747A35E00E1A90B /* Assets.xcassets in Resources */,
 				7BBC913A2747A35C00E1A90B /* Main.storyboard in Resources */,
@@ -481,6 +488,7 @@
 				7BBC91632747A82D00E1A90B /* WelcomeVC.swift in Sources */,
 				7BB634F3275E7C2B00CDADEE /* ClassCell.swift in Sources */,
 				7BB0E00C2753E9F800A8898F /* Constants.swift in Sources */,
+				7B9B476227601AA50065236D /* NoteWrite.swift in Sources */,
 				7B8CCFDC274EAED30098CBC2 /* Service.swift in Sources */,
 				7BB0E00A2753D7C500A8898F /* Utilities.swift in Sources */,
 				7BBC91672747A87000E1A90B /* SignUpVC.swift in Sources */,

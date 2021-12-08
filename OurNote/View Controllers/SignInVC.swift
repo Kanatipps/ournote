@@ -36,38 +36,7 @@ class SignInVC: UIViewController {
         }
     }
         
-//        let email = emailField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-//        let password = password.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-//
-//        // Signing in the user
-//        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-//
-//            if error != nil {
-//                // Couldn't sign in
-//                self.errLb.text = error!.localizedDescription
-//                self.errLb.alpha = 1
-//            }
-//            else {
-//
-//                let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeVC
-//                self.view.window?.rootViewController = homeViewController
-//                self.view.window?.makeKeyAndVisible()
-//            }
-//        }
     }
-        
-//        let auth = Auth.auth()
-//        let defautlts = UserDefaults.standard
-
-//
-//        auth.signIn(withEmail: emailField.text! , password: password.text!) { (authResult, err ) in
-//            if err != nil {
-//                self.present(Service.createAlertCon(title: "ERROR", messaage: err!.localizedDescription), animated: true, completion: nil)
-//                return
-//            }
-//            defautlts.set(true, forKey: "isUserSignedIn")
-//            self.performSegue(withIdentifier: "signInWelcome", sender: nil)
-//        }
     
     func transitionToHome() {
         
@@ -81,6 +50,7 @@ class SignInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
+        DatabaseManager.shared.checkUserID()
     }
     
     func setUpElements() {

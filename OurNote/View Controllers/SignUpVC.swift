@@ -98,27 +98,6 @@ class SignUpVC: UIViewController {
         Utilities.styleFilledButton(signUpBt)
     }
     
-    func validateFields() -> String? {
-        
-        if fNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            lNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            
-            return "Please fill in all fields."
-        }
-        
-        // Check if the password is secure
-        let cleanedPassword = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        if Utilities.isPasswordValid(cleanedPassword) == false {
-            // Password isn't secure enough
-            return "Please make sure your password is at least 8 characters, contains a special character and a number."
-        }
-        
-        return nil
-    }
-    
 }
 
     

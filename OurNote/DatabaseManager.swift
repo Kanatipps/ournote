@@ -8,6 +8,8 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseAuth
+import Firebase
+
 //hellokana
 //Hello Ken
 
@@ -79,9 +81,10 @@ class DatabaseManager {
                         print("Document successfully written!")
                         let data = document?.data()
                         response.email = email
+                        response.password = password
                         response.fName = data!["firstname"] as! String
                         response.lName = data!["lastname"] as! String
-                        response.password = password
+                        response.uid = data!["uid"] as! String
                         completion(.success(response))
                     }
                 }
@@ -94,7 +97,7 @@ class DatabaseManager {
         return String((1...6).map{ _ in letters.randomElement()! })
     }
 
-    public func createClass(class_name:String,completion:@escaping(Result<classModel,Error>) -> Void) {
+    public func createClass(class_name: String, completion:@escaping(Result<classModel,Error>) -> Void) {
             var ref: DocumentReference? = nil
             var response = classModel()
             let invitecode = randomString()
@@ -116,6 +119,106 @@ class DatabaseManager {
                 }
             }
         }
+    
+    public func createNote(noteTitle: String, noteDtail:String, completion:@escaping(Result<classModel,Error>) -> Void) {
+            var ref: DocumentReference? = nil
+            var response = classModel()
+            let invitecode = randomString()
+            let IDnote = updateNoteID()
+            ref = db.collection("class").addDocument(data: [
+                "classID" : IDnote,
+                "noteDetail" : noteDtail,
+                "title" : noteTitle,
+             
+            ]) { err in
+                if let err = err {
+                    completion(.failure(err))
+                } else {
+                    completion(.success(response))
+                }
+            }
+        }
+    
+    func updateNoteID(){
+        db.collection("note").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let Ref = self.db.collection("note").document(document.documentID)
+
+                    Ref.updateData([
+                        "noteID": document.documentID
+                    ]) { err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        } else {
+                            print("Document successfully updated")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
+//    func checkJoinClass(invite:String,classdata:[classModel]) -> Bool {
+//        
+//            var check = false
+//            var classselect = classModel()
+//            for i in classdata {
+//                if invite == i.classCode {
+//                    check = true
+//                    print("found")
+//                    classselect = i
+//                }
+//            }
+//            
+//            if classselect.classMember != nil {
+//                print("class=",classselect.classMember)
+//                for k in classselect.classMember! {
+//                    if checkUID() == k {
+//                        print("user=",checkUID())
+//                        print("k=",k)
+//                        print("id found")
+//                        check = false
+//                    }
+//                }
+//            }
+//            return check
+//        }
+//    
+//    
+//    //
+//    
+//    public func checkUID() -> String {
+//            return UserDefaults.standard.string(forKey: "uid") ?? ""
+//        }
+//    
+//    func getDocIDClassAttendance(invite:String,classdata:[classModel]) -> String {
+//            var doc:String = ""
+//            for i in classdata {
+//                if invite == i.classCode{
+//                    doc = i.classID!
+//                }
+//            }
+//            return doc
+//        }
+//    
+//    func addStudentList(invite:String,classdata:[classModel],id:String){
+//            let Ref = self.db.collection("class").document(getDocIDClassAttendance(invite: invite, classdata: classdata))
+//
+//            Ref.updateData([
+//                "studentList": FieldValue.arrayUnion([id]) ,
+//            ]) { err in
+//                if let err = err {
+//                    print("Error updating document: \(err)")
+//                } else {
+//                    print("Document successfully updated")
+//                }
+//            }
+//        }
+//    //
     
     func updateClassID(){
         db.collection("class").getDocuments() { (querySnapshot, err) in
@@ -139,4 +242,42 @@ class DatabaseManager {
         }
     }
     
+//    func getClass() {
+//            let db = Firestore.firestore()
+//            db.collection("card").getDocuments() { [weak self] (querySnapshot, err) in
+//                if let err = err {
+//                    print("Error getting documents: \(err)")
+//                } else {
+//                    var data = [classModel]()
+//                    for document in querySnapshot!.documents {
+//                        if let userid = Auth.auth().currentUser?.uid {
+//                            if userid == document.data()["uid"] as! String {
+//                                var obj = classModel()
+//                                obj.uid = document.data()["uid"]! as! String
+//                                obj.cardname = document.data()["cardname"]! as! String
+//                                obj.point = document.data()["point"]! as! Int
+//                                data.append(obj)
+//                            }
+//                        }
+//                        self?.data = data
+//                        self?.tableview.reloadData()
+//    //                    print("\(document.documentID) => \(document.data())")
+//                    }
+//                }
+//            }
+//        }
+    
+    func logout() {
+            do {
+                try FirebaseAuth.Auth.auth().signOut()
+                print("Log Out Success")
+            }
+            catch {
+                print("An error occurred")
+            }
+        }
+    
+    public func checkUserID() -> String {
+            return UserDefaults.standard.string(forKey: "uid") ?? ""
+        }
 }

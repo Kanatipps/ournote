@@ -6,24 +6,33 @@
 //
 
 import UIKit
+import Firebase
 
 class ClassEnter: UIViewController {
+    
+    var classMod = [classModel]()
 
+    @IBOutlet weak var classCodeTF: UITextField!
+    @IBOutlet weak var joinclassBT: UIButton!
+    @IBOutlet weak var createClassBT: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpElements()
 
-        // Do any additional setup after loading the view.
     }
     
+    func setUpElements() {
+        
+        Utilities.styleTextField(classCodeTF)
+        Utilities.styleFilledButton(joinclassBT)
+        Utilities.styleFilledButton(createClassBT)
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
     }
-    */
+    
+    @IBAction func joinClassTap(_ sender: Any) {
+
+           }
 
 }

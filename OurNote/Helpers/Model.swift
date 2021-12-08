@@ -12,9 +12,11 @@ struct userModel : Codable {
     var password : String?
     var fName : String?
     var lName : String?
+    var uid : String?
 }
 struct classModel : Codable {
     var className : String?
+    var classID : String?
     var classCode : String?
     var classMember : [String]?
     var noteID : [String]?
